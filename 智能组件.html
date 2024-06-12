@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智能组卷</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+  }
+  .exam-paper-box {
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .exam-paper-box h3 {
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  .exam-paper-box p {
+    margin: 10px 0;
+  }
+  .generate-button {
+    padding: 10px 20px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .generate-button:hover {
+    background-color: #4cae4c;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="exam-paper-box">
+    <h3>智能组卷</h3>
+    <p>点击下面的按钮生成智能组卷：</p>
+    <button class="generate-button" onclick="generateExamPaper()">生成组卷</button>
+  </div>
+</div>
+
+<script>
+  function generateExamPaper() {
+    // 假设您的API端点是 http://yourserver.com/api/generate-exam-paper
+    var apiEndpoint = 'http://yourserver.com/api/generate-exam-paper';
+
+    // 如果API需要参数，您可以将其作为对象传递
+    var params = {
+      examType: 'politics', // 示例参数，根据实际情况修改
+      difficulty: 'medium'  // 示例参数，根据实际情况修改
+    };
+
+    // 使用fetch发送POST请求
+    fetch(apiEndpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params) // 将参数转换为JSON字符串
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // 解析JSON格式的响应体
+    })
+    .then(data => {
+      // 这里处理API返回的数据
+      alert('智能组卷生成成功！');
+      // 假设这里是跳转逻辑
+      window.location.href = 'exam_paper.html';
+    })
+    .catch(error => {
+      // 处理任何在请求过程中发生的错误
+      console.error('There has been a problem with your fetch operation:', error);
+      alert('生成组卷时发生错误，请重试。');
+    });
+  }
+</script>
+
+</body>
+</html>

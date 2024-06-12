@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>选择考试类型</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .exam-type-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  .exam-type-box h2 {
+    margin-top: 0;
+  }
+  .exam-type-box p {
+    margin: 10px 0;
+    color: #666;
+  }
+  .exam-type-box button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .exam-type-box button:hover {
+    background-color: #4cae4c;
+  }
+  .exam-type-box button img {
+    margin-right: 5px;
+    height: 20px;
+    vertical-align: middle;
+  }
+</style>
+</head>
+<body>
+<div class="exam-type-box">
+
+  <h2>选择您的考试类型</h2>
+  <p>请从以下两种考试类型中选择一种：</p>
+  <button onclick="selectExamType('公务员')">
+    <img src="D:\桌面\前端\考公.jpg" alt="公务员图标">考公
+  </button>
+  <button onclick="selectExamType('研究生')">
+    <img src="D:\桌面\前端\考研.jpg" alt="研究生图标">考研
+  </button>
+  <p>选择后，您将进入智能组卷页面。</p>
+</div>
+
+<script>
+  function selectExamType(type) {
+    alert('你选择了 ' + type + ' 考试。');
+    window.location.href = '/智能组件.html';
+  }
+</script>
+</body>
+</html>
